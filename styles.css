@@ -1,0 +1,108 @@
+:root {
+    --primary-bg: #0f172a;
+    --accent-emerald: #10b981;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+body {
+    background-color: var(--primary-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.card {
+    position: relative;
+    width: 480px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    color: var(--text-main);
+    overflow: hidden; /* For the shimmer effect */
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+}
+
+/* Eye-Catching Shimmer Animation */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--accent-emerald);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 22px; /* Professional "Squircle" */
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.card:hover .avatar {
+    transform: rotate(-3deg) scale(1.05);
+}
+
+.info-container h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to bottom right, #fff 30%, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.info-container p {
+    margin: 5px 0;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* Formal Green Accent - Refined */
+.location {
+    display: inline-block;
+    margin-top: 15px !important;
+    padding: 6px 14px;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent-emerald) !important;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 8px;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
